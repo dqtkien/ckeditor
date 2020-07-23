@@ -32,6 +32,7 @@ import TextTransformation from "@ckeditor/ckeditor5-typing/src/texttransformatio
 import Alignment from "@ckeditor/ckeditor5-alignment/src/alignment";
 import FontColor from "@ckeditor/ckeditor5-font/src/fontcolor";
 import FontSize from "@ckeditor/ckeditor5-font/src/fontsize";
+
 import HighLight from "@ckeditor/ckeditor5-highlight/src/highlight";
 import Strikethrough from "@ckeditor/ckeditor5-basic-styles/src/strikethrough";
 
@@ -39,6 +40,7 @@ import Subscript from "@ckeditor/ckeditor5-basic-styles/src/subscript";
 import Superscript from "@ckeditor/ckeditor5-basic-styles/src/superscript";
 import Underline from "@ckeditor/ckeditor5-basic-styles/src/underline";
 import ImageResize from "@ckeditor/ckeditor5-image/src/imageresize";
+import Font from "@ckeditor/ckeditor5-font/src/font";
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -76,6 +78,7 @@ ClassicEditor.builtinPlugins = [
 	Table,
 	TableToolbar,
 	TextTransformation,
+	Font,
 ];
 
 // Editor configuration.
@@ -91,6 +94,7 @@ ClassicEditor.defaultConfig = {
 			"alignment",
 			"fontcolor",
 			"fontsize",
+			"fontBackgroundColor",
 			"HighLight",
 			"Strikethrough",
 			"Subscript",
