@@ -171,6 +171,7 @@ ClassicEditor.builtinPlugins = [
 // Editor configuration.
 ClassicEditor.defaultConfig = {
 	toolbar: {
+		shouldNotGroupWhenFull: true,
 		items: [
 			"heading",
 			"|",
