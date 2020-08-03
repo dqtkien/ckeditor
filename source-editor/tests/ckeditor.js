@@ -5,11 +5,11 @@
 
 /* globals document */
 
-import ClassicEditor from '../src/ckeditor';
-import BaseClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
+import InlineEditor from '../src/ckeditor';
+import BaseInlineEditor from '@ckeditor/ckeditor5-editor-inline/src/inlineeditor';
 import { describeMemoryUsage, testMemoryUsage } from '@ckeditor/ckeditor5-core/tests/_utils/memory';
 
-describe( 'ClassicEditor build', () => {
+describe( 'InlineEditor build', () => {
 	let editor, editorElement;
 
 	beforeEach( () => {
@@ -21,22 +21,21 @@ describe( 'ClassicEditor build', () => {
 
 	afterEach( () => {
 		editorElement.remove();
-		editor = null;
 	} );
 
-	describe( 'build', () => {
+	describe( 'buid', () => {
 		it( 'contains plugins', () => {
-			expect( ClassicEditor.builtinPlugins ).to.not.be.empty;
+			expect( InlineEditor.builtinPlugins ).to.not.be.empty;
 		} );
 
 		it( 'contains config', () => {
-			expect( ClassicEditor.defaultConfig.toolbar ).to.not.be.empty;
+			expect( InlineEditor.defaultConfig.toolbar ).to.not.be.empty;
 		} );
 	} );
 
 	describe( 'create()', () => {
 		beforeEach( () => {
-			return ClassicEditor.create( editorElement )
+			return InlineEditor.create( editorElement )
 				.then( newEditor => {
 					editor = newEditor;
 				} );
@@ -46,9 +45,9 @@ describe( 'ClassicEditor build', () => {
 			return editor.destroy();
 		} );
 
-		it( 'creates an instance which inherits from the ClassicEditor', () => {
-			expect( editor ).to.be.instanceof( ClassicEditor );
-			expect( editor ).to.be.instanceof( BaseClassicEditor );
+		it( 'creates an instance which inherits from the InlineEditor', () => {
+			expect( editor ).to.be.instanceof( InlineEditor );
+			expect( editor ).to.be.instanceof( BaseInlineEditor );
 		} );
 
 		it( 'loads data from the editor element', () => {
@@ -58,7 +57,7 @@ describe( 'ClassicEditor build', () => {
 
 	describe( 'destroy()', () => {
 		beforeEach( () => {
-			return ClassicEditor.create( editorElement )
+			return InlineEditor.create( editorElement )
 				.then( newEditor => {
 					editor = newEditor;
 				} );
@@ -72,20 +71,11 @@ describe( 'ClassicEditor build', () => {
 					expect( editorElement.innerHTML ).to.equal( '<p>foo</p>' );
 				} );
 		} );
-
-		it( 'restores the editor element', () => {
-			expect( editor.sourceElement.style.display ).to.equal( 'none' );
-
-			return editor.destroy()
-				.then( () => {
-					expect( editor.sourceElement.style.display ).to.equal( '' );
-				} );
-		} );
 	} );
 
 	describe( 'plugins', () => {
 		beforeEach( () => {
-			return ClassicEditor.create( editorElement )
+			return InlineEditor.create( editorElement )
 				.then( newEditor => {
 					editor = newEditor;
 				} );
@@ -167,44 +157,9 @@ describe( 'ClassicEditor build', () => {
 		} );
 	} );
 
-	describe( 'config', () => {
-		afterEach( () => {
-			return editor.destroy();
-		} );
-
-		// https://github.com/ckeditor/ckeditor5/issues/572
-		it( 'allows configuring toolbar items through config.toolbar', () => {
-			return ClassicEditor
-				.create( editorElement, {
-					toolbar: [ 'bold' ]
-				} )
-				.then( newEditor => {
-					editor = newEditor;
-
-					expect( editor.ui.view.toolbar.items.length ).to.equal( 1 );
-				} );
-		} );
-
-		// https://github.com/ckeditor/ckeditor5/issues/572
-		it( 'allows configuring toolbar offset without overriding toolbar items', () => {
-			return ClassicEditor
-				.create( editorElement, {
-					toolbar: {
-						viewportTopOffset: 42
-					}
-				} )
-				.then( newEditor => {
-					editor = newEditor;
-
-					expect( editor.ui.view.toolbar.items.length ).to.equal( 17 );
-					expect( editor.ui.view.stickyPanel.viewportTopOffset ).to.equal( 42 );
-				} );
-		} );
-	} );
-
 	describeMemoryUsage( () => {
 		testMemoryUsage(
 			'should not grow on multiple create/destroy',
-			() => ClassicEditor.create( document.querySelector( '#mem-editor' ) ) );
+			() => InlineEditor.create( document.querySelector( '#mem-editor' ) ) );
 	} );
 } );

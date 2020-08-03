@@ -1,4 +1,4 @@
-# CKEditor 5 classic build – standard version
+# CKEditor 5 inline editor build – standard version
 
 Just play with it.
 

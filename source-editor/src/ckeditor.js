@@ -29,6 +29,8 @@ import Paragraph from "@ckeditor/ckeditor5-paragraph/src/paragraph";
 import PasteFromOffice from "@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice";
 import Table from "@ckeditor/ckeditor5-table/src/table";
 import TableToolbar from "@ckeditor/ckeditor5-table/src/tabletoolbar";
+import TableProperties from "@ckeditor/ckeditor5-table/src/tableproperties";
+import TableCellProperties from "@ckeditor/ckeditor5-table/src/tablecellproperties";
 import TextTransformation from "@ckeditor/ckeditor5-typing/src/texttransformation";
 import Underline from "@ckeditor/ckeditor5-basic-styles/src/underline";
 import Strikethrough from "@ckeditor/ckeditor5-basic-styles/src/strikethrough";
@@ -36,8 +38,96 @@ import Code from "@ckeditor/ckeditor5-basic-styles/src/code";
 import Subscript from "@ckeditor/ckeditor5-basic-styles/src/subscript";
 import Superscript from "@ckeditor/ckeditor5-basic-styles/src/superscript";
 import SimpleUploadAdapter from "@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter";
+import Highlight from "@ckeditor/ckeditor5-highlight/src/highlight";
+import ImageResize from "@ckeditor/ckeditor5-image/src/imageresize";
+import LinkImage from "@ckeditor/ckeditor5-link/src/linkimage";
 
 export default class ClassicEditor extends ClassicEditorBase {}
+
+const customColorPalette = [
+	{
+		color: "hsl(4, 90%, 58%)",
+		label: "Red",
+	},
+	{
+		color: "hsl(340, 82%, 52%)",
+		label: "Pink",
+	},
+	{
+		color: "hsl(291, 64%, 42%)",
+		label: "Purple",
+	},
+	{
+		color: "hsl(262, 52%, 47%)",
+		label: "Deep Purple",
+	},
+	{
+		color: "hsl(231, 48%, 48%)",
+		label: "Indigo",
+	},
+	{
+		color: "hsl(207, 90%, 54%)",
+		label: "Blue",
+	},
+	{
+		color: "#02A6F2",
+		label: "Light Blue",
+	},
+	{
+		color: "#00BDD6",
+		label: "Cyan",
+	},
+	{
+		color: "#009485",
+		label: "Teal",
+	},
+	{
+		color: "#4CAE4F",
+		label: "Green",
+	},
+	{
+		color: "#8BC34B",
+		label: "Light Green",
+	},
+	{
+		color: "#CBDC38",
+		label: "Lime",
+	},
+	{
+		color: "#FDD835",
+		label: "Yellow",
+	},
+	{
+		color: "#FFC105",
+		label: "Amber",
+	},
+	{
+		color: "#FF9900",
+		label: "Orange",
+	},
+	{
+		color: "#F4511F",
+		label: "Deep Orange",
+	},
+	{
+		color: "#6C4C41",
+		label: "Brown",
+	},
+	{
+		color: "#9E9E9E",
+		label: "Grey",
+	},
+	{
+		color: "#607C8A",
+		label: "Blue Grey",
+	},
+	{
+		color: "#FFFFFF",
+		label: "White",
+	},
+
+	// ...
+];
 
 // Plugins to include in the build.
 ClassicEditor.builtinPlugins = [
@@ -53,6 +143,7 @@ ClassicEditor.builtinPlugins = [
 	Subscript,
 	Superscript,
 	BlockQuote,
+	Highlight,
 	CKFinder,
 	EasyImage,
 	Heading,
@@ -69,8 +160,12 @@ ClassicEditor.builtinPlugins = [
 	PasteFromOffice,
 	Table,
 	TableToolbar,
+	TableProperties,
+	TableCellProperties,
 	TextTransformation,
 	SimpleUploadAdapter,
+	ImageResize,
+	LinkImage,
 ];
 
 // Editor configuration.
@@ -82,39 +177,83 @@ ClassicEditor.defaultConfig = {
 			"bold",
 			"italic",
 			"underline",
-			"strikethrough",
-			"code",
-			"subscript",
-			"superscript",
 			"link",
 			"fontSize",
 			"fontFamily",
 			"fontColor",
 			"fontBackgroundColor",
-			"bulletedList",
-			"numberedList",
+			"imageUpload",
+			"blockQuote",
+			"insertTable",
 			"|",
 			"indent",
 			"outdent",
 			"|",
-			"imageUpload",
-			"blockQuote",
-			"insertTable",
+			"bulletedList",
+			"numberedList",
+			"|",
+			"highlight",
+			"removeHighlight",
+			"|",
+			"code",
+			"subscript",
+			"superscript",
+			"strikethrough",
 			"mediaEmbed",
 			"undo",
 			"redo",
 		],
 	},
 	image: {
+		styles: ["alignLeft", "alignCenter", "alignRight", "full", "side"],
+		resizeOptions: [
+			{
+				name: "imageResize:original",
+				value: null,
+				icon: "original",
+			},
+			{
+				name: "imageResize:50",
+				value: "50",
+				icon: "medium",
+			},
+			{
+				name: "imageResize:75",
+				value: "75",
+				icon: "large",
+			},
+		],
 		toolbar: [
 			"imageStyle:full",
 			"imageStyle:side",
 			"|",
+			"imageStyle:alignLeft",
+			"imageStyle:alignCenter",
+			"imageStyle:alignRight",
+			"|",
 			"imageTextAlternative",
+			"imageResize:50",
+			"imageResize:75",
+			"imageResize:original",
+			"linkImage",
 		],
 	},
 	table: {
-		contentToolbar: ["tableColumn", "tableRow", "mergeTableCells"],
+		contentToolbar: [
+			"tableColumn",
+			"tableRow",
+			"mergeTableCells",
+			"tableProperties",
+			"tableCellProperties",
+		],
+		tableProperties: {
+			borderColors: customColorPalette,
+			backgroundColors: customColorPalette,
+		},
+		tableCellProperties: {
+			borderColors: customColorPalette,
+			backgroundColors: customColorPalette,
+		},
 	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: "en",

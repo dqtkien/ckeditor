@@ -5,9 +5,9 @@
 
 /* globals window, document, console */
 
-import ClassicEditor from '../../build/ckeditor';
+import InlineEditor from '../../build/ckeditor';
 
-ClassicEditor.create( document.querySelector( '#editor' ) )
+InlineEditor.create( document.querySelector( '#editor' ) )
 	.then( editor => {
 		window.editor = editor;
 	} )

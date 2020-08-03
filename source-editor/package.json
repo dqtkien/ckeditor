@@ -75,6 +75,7 @@
   "dependencies": {
     "@ckeditor/ckeditor5-font": "^21.0.0",
     "@ckeditor/ckeditor5-highlight": "^21.0.0",
+    "@ckeditor/ckeditor5-remove-format": "^21.0.0",
     "@ckeditor/ckeditor5-upload": "^21.0.0"
   }
 }
