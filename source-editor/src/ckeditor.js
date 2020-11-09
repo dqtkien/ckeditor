@@ -22,14 +22,12 @@ import ImageToolbar from "@ckeditor/ckeditor5-image/src/imagetoolbar";
 import ImageUpload from "@ckeditor/ckeditor5-image/src/imageupload";
 import Indent from "@ckeditor/ckeditor5-indent/src/indent";
 import Link from "@ckeditor/ckeditor5-link/src/link";
-import ListStyle from "@ckeditor/ckeditor5-list/src/liststyle";
 import MediaEmbed from "@ckeditor/ckeditor5-media-embed/src/mediaembed";
 import Paragraph from "@ckeditor/ckeditor5-paragraph/src/paragraph";
 import PasteFromOffice from "@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice";
 import Table from "@ckeditor/ckeditor5-table/src/table";
 import TableToolbar from "@ckeditor/ckeditor5-table/src/tabletoolbar";
 import TextTransformation from "@ckeditor/ckeditor5-typing/src/texttransformation";
-
 //add in Plugin
 
 import Font from "@ckeditor/ckeditor5-font/src/font";
@@ -45,6 +43,7 @@ import Highlight from "@ckeditor/ckeditor5-highlight/src/highlight";
 import ImageResize from "@ckeditor/ckeditor5-image/src/imageresize";
 import LinkImage from "@ckeditor/ckeditor5-link/src/linkimage";
 import Alignment from "@ckeditor/ckeditor5-alignment/src/alignment";
+import ListStyle from "@ckeditor/ckeditor5-list/src/liststyle";
 
 export default class ClassicEditor extends ClassicEditorBase {}
 

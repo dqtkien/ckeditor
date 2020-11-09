@@ -18,6 +18,11 @@ First, install the build from npm:
 npm i @kevin-oisp/kevin-ckeditor
 ```
 
+If you use in React app, install this package:
+```bash
+npm install --save @ckeditor/ckeditor5-react
+```
+
 And use it in your website:
 
 ```html
