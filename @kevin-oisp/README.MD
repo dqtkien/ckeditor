@@ -19,6 +19,7 @@ npm i @kevin-oisp/kevin-ckeditor
 ```
 
 If you use in React app, install this package:
+
 ```bash
 npm install --save @ckeditor/ckeditor5-react
 ```
@@ -57,7 +58,7 @@ ClassicEditor.create(document.querySelector("#editor"))
 
 ```js (ReactJS)
 import React from "react";
-import CKEditor from "@ckeditor/ckeditor5-react";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@kevin-oisp/kevin-ckeditor";
 
 function App() {
@@ -67,7 +68,7 @@ function App() {
         <CKEditor
           editor={ClassicEditor}
           data="<p>Hello from CKEditor 5!</p>"
-          onInit={(editor) => {
+          onReady={(editor) => {
             // You can store the "editor" and use when it is needed.
             console.log("Editor is ready to use!", editor);
           }}
