@@ -48,7 +48,7 @@
     "@ckeditor/ckeditor5-theme-lark": "^23.1.0",
     "@ckeditor/ckeditor5-typing": "^23.1.0",
     "@ckeditor/ckeditor5-alignment": "^23.1.0",
-    "@ckeditor/ckeditor5-font": "^23.1.0",
+    "@ckeditor/ckeditor5-font": "^27.0.0",
     "@ckeditor/ckeditor5-highlight": "^23.1.0",
     "@ckeditor/ckeditor5-remove-format": "^23.1.0",
     "@ckeditor/ckeditor5-upload": "^23.1.0",
